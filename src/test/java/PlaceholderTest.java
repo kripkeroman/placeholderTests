@@ -53,7 +53,8 @@ public class PlaceholderTest
     }
 
     @Test
-    public void getPostTest() {
+    public void getPostTest()
+    {
         int postId = 1;
 
         Response response = given()
@@ -66,7 +67,8 @@ public class PlaceholderTest
     }
 
     @Test
-    public void updatePostTest() {
+    public void updatePostTest()
+    {
         int postId = 1;
         PostBody updatedPost = new PostBody();
         updatedPost.setUserId(1);
@@ -86,7 +88,8 @@ public class PlaceholderTest
     }
 
     @Test
-    public void deletePostTest() {
+    public void deletePostTest()
+    {
         int postId = 1;
 
         Response response = given()
@@ -97,7 +100,8 @@ public class PlaceholderTest
     }
 
     @Test
-    public void calculateTopWordsInPosts() {
+    public void calculateTopWordsInPosts()
+    {
         Response response = given()
                 .filter(new AllureRestAssured())
                 .get(BASE_URL);
