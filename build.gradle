@@ -25,5 +25,13 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    finalizedBy 'allureReport'
 }
+
+tasks.register('copyAllureReport', Copy) {
+    from "$buildDir/reports/allure-report/allureReport"
+    into "$rootDir/allure-report"
+}
+
+tasks.allureReport.finalizedBy('copyAllureReport')
 
