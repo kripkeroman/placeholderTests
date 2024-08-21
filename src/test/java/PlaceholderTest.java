@@ -1,5 +1,6 @@
 import com.org.placeholder.dto.PostBody;
 import com.org.placeholder.property.PropertyReader;
+import io.qameta.allure.Allure;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -111,9 +112,16 @@ public class PlaceholderTest
                 .collect(Collectors.toMap(Function.identity(), word -> 1, Integer::sum));
 
         AtomicInteger counter = new AtomicInteger(1);
+        StringBuilder logContent = new StringBuilder();
+
         wordCountMap.entrySet().stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .limit(10)
-                .forEachOrdered(entry -> logger.info("{}. {} - {}", counter.getAndIncrement(), entry.getKey(), entry.getValue()));
+                .forEachOrdered(entry -> {
+                    String logEntry = String.format("%d. %s - %d", counter.getAndIncrement(), entry.getKey(), entry.getValue());
+                    logger.info(logEntry);
+                    logContent.append(logEntry).append("\n");
+                });
+        Allure.addAttachment("Top 10 Words", logContent.toString());
     }
 }
