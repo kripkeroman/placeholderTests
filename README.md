@@ -33,11 +33,6 @@ To execute the tests, use the following command:
 # This will run all the test cases included in the PlaceholderTest class.
 
 ## Generate and View Allure Reports
-### Generate Allure Report
-After running the tests, generate the Allure report using the following command:
-```bash
-./gradlew allureReport
-```
 ### Serve Allure Report
 To view the Allure report in your browser, you can serve the report using:
 ```bash
